@@ -32,7 +32,23 @@ class MyDB :
         # pass 
 
     def get_hash_list(self):
-        pass
+        query = "SELECT news_hash FROM " + self._table
+        self._cursor.execute(query)
+        records = self._cursor.fetchall()
+        ret = []
+        for v in records:
+            ret.append( list(v)[0] )
+        return ret
+        # pass
+    def get_all(self):
+        query = "SELECT news_hash , news_link FROM " + self._table 
+        self._cursor.execute(query)
+        records = self._cursor.fetchall()
+        ret = {} 
+        for v in records :
+            ret[v[0]] = v[1]
+        return ret     
+
     def insert_news(self,news_dict={}):
         keys = list(news_dict.keys())
         records = []

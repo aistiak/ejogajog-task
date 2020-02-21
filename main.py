@@ -9,4 +9,5 @@ config = {
 
 db = MyDB(config)
 # db.insert_news({'hash1':'news_link1','hash2':'news_link2'})
-print(config)
+# print(db.get_hash_list())
+print(db.get_all())
