@@ -1,3 +1,9 @@
+# connectos to MySql Database 
+# creates Database and Table if already not there 
+# adds records to table in news_hash and news_link fields
+# return hash_list 
+# get all data  
+
 import mysql.connector as mysql
 
 class MyDB :
@@ -40,6 +46,8 @@ class MyDB :
             ret.append( list(v)[0] )
         return ret
         # pass
+
+
     def get_all(self):
         query = "SELECT news_hash , news_link FROM " + self._table 
         self._cursor.execute(query)
@@ -48,6 +56,7 @@ class MyDB :
         for v in records :
             ret[v[0]] = v[1]
         return ret     
+
 
     def insert_news(self,news_dict={}):
         keys = list(news_dict.keys())
