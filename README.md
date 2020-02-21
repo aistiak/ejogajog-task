@@ -13,3 +13,6 @@
   <li> wait for 10-15 minutes , meanwhile you will see some log in the console  </li>
   <li> when the script has finished executing the data will be saved in the database </li>
 </ul>
+
+
+<h1>OR</h1>
