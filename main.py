@@ -2,7 +2,7 @@ from dbManager import MyDB
 from newsManager import MyNews
 config = {
     'db': 'tes2',
-    'table': 'test',
+    'table': 'prothom_alo',
     'user' : 'root',
     'password' : '',
 }
@@ -17,7 +17,7 @@ news = MyNews(base_url      =base_url,
               must_contain  ="www.prothomalo.com",
               target_class  ="link_overlay")
 
-news.fetch_news(base_url) # hear base url in enry point 
+news.fetch_news(base_url) # hear base url is the enry point 
 
 db.insert_news(news.get_news_dict())
 # db.insert_news({'hash1':'news_link1','hash2':'news_link2'})

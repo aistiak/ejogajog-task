@@ -5,6 +5,7 @@
 # get all data  
 
 import mysql.connector as mysql
+import re 
 
 class MyDB :
     _db = ''
@@ -33,7 +34,7 @@ class MyDB :
         self._cursor.execute("use " + self._db_name)
         # create table if not exist 
         self._cursor.execute("CREATE TABLE IF NOT EXISTS " + self._table + 
-                             " (id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,news_hash VARCHAR(255), news_link VARCHAR(50000))")
+                             " (id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,news_hash VARCHAR(255), news_link VARCHAR(50000), category VARCHAR(300))")
 
         # pass 
 
@@ -57,13 +58,23 @@ class MyDB :
             ret[v[0]] = v[1]
         return ret     
 
+    def get_category(self,link):
+        r = re.findall("[/][a-zA-Z]{1,20}[/]",link)
+        if len(r) > 0 :
+            r = r[0]
+            r = r[1:]
+            r = r[:-1]
+            return r 
+        return ""
+
 
     def insert_news(self,news_dict={}):
         keys = list(news_dict.keys())
         records = []
         for key in keys :
-            t = (key,news_dict[key])
+            category = self.get_category(news_dict[key])
+            t = (key,news_dict[key],category)
             records.append(t)
-        query = "INSERT INTO " + self._table + " (news_hash, news_link) VALUES (%s, %s)"   
+        query = "INSERT INTO " + self._table + " (news_hash, news_link, category) VALUES (%s, %s, %s)"   
         self._cursor.executemany(query, records) 
         # pass

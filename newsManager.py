@@ -31,10 +31,11 @@ class MyNews:
     # def set_news_hash_list(self,hash_list=[]):
     #     return self._main_hash = hash_list        
 
+
     def fetch_news(self, url, depth=0):
         print("recursion depth", depth)
-        # if depth > 30 :
-        #     return 
+        if depth > 2 :
+            return 
         # check if url is valid and contains  prthom alos url if not return
         if validators.url(url) == True and self._must_contain in url:
             pass
