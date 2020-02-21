@@ -33,5 +33,12 @@ class MyDB :
 
     def get_hash_list(self):
         pass
-    def insert_news(self):
-        pass
+    def insert_news(self,news_dict={}):
+        keys = list(news_dict.keys())
+        records = []
+        for key in keys :
+            t = (key,news_dict[key])
+            records.append(t)
+        query = "INSERT INTO " + self._table + " (news_hash, news_link) VALUES (%s, %s)"   
+        self._cursor.executemany(query, records) 
+        # pass
