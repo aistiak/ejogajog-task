@@ -33,6 +33,8 @@ class MyNews:
 
     def fetch_news(self, url, depth=0):
         print("recursion depth", depth)
+        # if depth > 30 :
+        #     return 
         # check if url is valid and contains  prthom alos url if not return
         if validators.url(url) == True and self._must_contain in url:
             pass

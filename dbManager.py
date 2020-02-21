@@ -33,7 +33,7 @@ class MyDB :
         self._cursor.execute("use " + self._db_name)
         # create table if not exist 
         self._cursor.execute("CREATE TABLE IF NOT EXISTS " + self._table + 
-                             " (id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,news_hash VARCHAR(255), news_link VARCHAR(255))")
+                             " (id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,news_hash VARCHAR(255), news_link VARCHAR(50000))")
 
         # pass 
 
