@@ -52,7 +52,7 @@ class MyNews:
         else:
             h = str(hash(url))
             self._main_hash.append(h)
-        
+        print('fetching data ......')
         try:
             response = requests.get(url=url)
         except:
@@ -65,6 +65,7 @@ class MyNews:
             if "class" in anchor.attrs:
                 if  self._target_class in anchor["class"]:
                     t_url = self._URL + anchor.attrs["href"]
+                    print(t_url)
                     h = str(hash(t_url))
                     self._main_dict[h] = t_url
                     if h not in self._main_hash:

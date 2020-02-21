@@ -1,5 +1,6 @@
 from dbManager import MyDB 
 from newsManager import MyNews
+
 config = {
     'db': 'tes2',
     'table': 'prothom_alo',
