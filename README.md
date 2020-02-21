@@ -2,7 +2,7 @@
 <h3>prerequisites</h3>
 <ul>
   <li> must have <b>mysql</b> installed and running</li>
-  <li> must have <b>python3</b> and <b>pip</b> installed <li>
+  <li> must have <b>python3</b> and <b>pip</b> installed </li>
 </ul>
 <h3> Steps to follow</h3>
 <ul> 
