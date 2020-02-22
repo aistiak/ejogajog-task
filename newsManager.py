@@ -3,6 +3,7 @@
 import requests
 import validators
 from bs4 import BeautifulSoup
+from dbManager import MyDB 
 
 
 class MyNews:
@@ -12,12 +13,14 @@ class MyNews:
     # dir_list = []
     _URL = '' #"http://www.prothomalo.com"
     _must_contain = '' #"www.prothomalo.com"
+    _db_instance  = ''
 
-    def __init__(self ,base_url,hash_list,must_contain,target_class):
+    def __init__(self ,base_url,hash_list,must_contain,target_class,db_instance):
         self._URL = base_url
         self._main_hash = hash_list
         self._must_contain = must_contain 
         self._target_class = target_class
+        self._db_instance  = db_instance 
 
         # pass
 
@@ -70,6 +73,10 @@ class MyNews:
                     self._main_dict[h] = t_url
                     if h not in self._main_hash:
                         self._main_hash.append(h)
+                        _d = {}
+                        _d[h] = t_url 
+                        self._db_instance.insert_news(_d)
+                        print('inserting to Database')
             else:
                 # if dir url recursive call
                 h = str(hash(anchor["href"]))

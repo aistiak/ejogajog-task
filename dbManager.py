@@ -78,3 +78,5 @@ class MyDB :
         query = "INSERT INTO " + self._table + " (news_hash, news_link, category) VALUES (%s, %s, %s)"   
         self._cursor.executemany(query, records) 
         # pass
+
+    # def insert_single_news(self,news_dict={})
