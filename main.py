@@ -2,7 +2,7 @@ from dbManager import MyDB
 from newsManager import MyNews
 
 config = {
-    'db': 'tes2',
+    'db': 'test',
     'table': 'prothom_alo',
     'user' : 'root',  # 
     'password' : '',
