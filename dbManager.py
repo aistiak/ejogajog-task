@@ -4,6 +4,8 @@
 # return hash_list 
 # get all data  
 
+# import pymysql as mysql
+# import MySQLdb as mysql
 import mysql.connector as mysql
 import re 
 
@@ -77,6 +79,7 @@ class MyDB :
             records.append(t)
         query = "INSERT INTO " + self._table + " (news_hash, news_link, category) VALUES (%s, %s, %s)"   
         self._cursor.executemany(query, records) 
+        self._db.commit()
         # pass
 
     # def insert_single_news(self,news_dict={})
